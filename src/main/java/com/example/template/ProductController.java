@@ -19,6 +19,11 @@ public class ProductController {
     @GetMapping("/product/{productId}")
     Product productStockCheck(@PathVariable(value = "productId") Long productId) {
         System.out.println("productStockCheck call");
+        try {
+            Thread.sleep((long) (400 + Math.random() * 300));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return  this.productService.getProductById(productId);
     }
 
