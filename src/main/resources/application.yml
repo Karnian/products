@@ -25,3 +25,11 @@ spring:
 #    web:
 #      skipPattern: (^cleanup.*|.+favicon.*)
 
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution.isolation.thread.timeoutInMilliseconds: 680
