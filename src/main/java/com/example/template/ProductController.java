@@ -2,8 +2,11 @@ package com.example.template;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.PostPersist;
 
 @RestController
 public class ProductController {
@@ -37,6 +40,11 @@ public class ProductController {
     @PostMapping("/product")
     Product productInsert(@RequestBody String data) {
         System.out.println(data);
+        try {
+            Thread.sleep((long) (400 + Math.random() * 300));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return this.productService.save(data);
     }
 
